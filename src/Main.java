@@ -20,23 +20,21 @@ public class Main {
 
         WebDriver driver = new ChromeDriver();
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        driver.get("https://auth.wikimedia.org/eswiki/wiki/Especial:Crear_una_cuenta?useformat=desktop&usesul3=1&returnto=Selenium&centralauthLoginToken=8893a474fb57dbff9e099888a3484fc1");
 
-        driver.get("https://es.wikipedia.org/wiki/Wikipedia:Portada");
+        WebElement usuario = driver.findElement(By.id("wpName2"));
+        usuario.sendKeys("usuario Automation");
+
+        WebElement contraseña = driver.findElement(By.id("wpPassword2"));
+        contraseña.sendKeys("contraseñaAutomation");
+
+        WebElement contraseñar = driver.findElement(By.id("wpRetype"));
+        contraseñar.sendKeys("contraseñaAutomation");
+
+        WebElement correo = driver.findElement(By.id("wpEmail"));
+        correo.sendKeys("correo1@gmail.com");
 
 
-
-        WebElement Lupa = driver.findElement(By.xpath("//*[@id=\"p-search\"]/a/span[1]"));
-        Lupa.click();
-
-
-        WebElement searchbox = wait.until(
-                ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"searchform\"]/div/div/div[1]/input"))
-        );
-        searchbox.click();
-        searchbox.sendKeys("Selenium");
-
-        searchbox.submit();
     }
 
 }
